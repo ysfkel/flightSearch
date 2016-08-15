@@ -13,19 +13,19 @@ namespace FlightExperienceBot
     public class FlightRepo
     {
         private string uri;
-      
+
         public FlightRepo()
         {
-          
+
         }
 
         public FlightRepo(string uri)
         {
             this.uri = uri;
         }
-        public async Task<List<Flight>> GetFlight(string departureCity, string arrivalCity,string dayOfWeek,string airline)
+        public async Task<List<Flight>> GetFlight(string departureCity, string arrivalCity, string dayOfWeek, string airline)
         {
- 
+
             FlightSearch flightSearch = new FlightSearch();
 
             HttpClient client = new HttpClient();
@@ -42,42 +42,48 @@ namespace FlightExperienceBot
             if (response.IsSuccessStatusCode)
             {
 
-              var dataObjects =await response.Content.ReadAsStringAsync();
+                var dataObjects = await response.Content.ReadAsStringAsync();
                 flightSearch = JsonConvert.DeserializeObject<FlightSearch>(dataObjects);
-                flights= FilterFlights(flightSearch.flights, departureCity, arrivalCity, dayOfWeek, airline);
+                flights = FilterFlights(flightSearch.flights, departureCity, arrivalCity, dayOfWeek, airline);
             }
-           
+
             return flights;
 
         }
 
-        private List<Flight>FilterFlights(List<Flight> flights,string departureCity,string arrivalCity,string dayOfWeek, string airline)
+        private List<Flight> FilterFlights(List<Flight> flights, string departureCity, string arrivalCity, string dayOfWeek, string airline)
         {
-        
-            if(departureCity!=null)
+
+            if (departureCity != null)
             {
-                flights = flights.Where(x => x.lang!=null && x.lang.en!=null && x.lang.en.originName!=null && x.lang.en.originName.ToLower() == departureCity.ToLower()).ToList();
+                flights = flights.Where(x => x.lang != null && x.lang.en != null && x.lang.en.originName != null && x.lang.en.originName.ToLower() == departureCity.ToLower()).ToList();
             }
 
-            if(arrivalCity!=null)
+            if (arrivalCity != null)
             {
-                flights = flights.Where(x => x.lang!=null && x.lang.en!=null && x.lang.en.destinationName!=null &&  x.lang.en.destinationName.ToLower() == arrivalCity.ToLower()).ToList();
+                flights = flights.Where(x => x.lang != null && x.lang.en != null && x.lang.en.destinationName != null && x.lang.en.destinationName.ToLower() == arrivalCity.ToLower()).ToList();
             }
 
             if (airline != null)
             {
-                flights = flights.Where(x => x.fullName!=null && x.fullName.ToLower() == airline.ToLower()).ToList();
+                flights = flights.Where(x => x.fullName != null && x.fullName.ToLower() == airline.ToLower()).ToList();
             }
 
-            if(dayOfWeek !=null)
+            if (dayOfWeek != null)
             {
 
-                if(dayOfWeek.ToLower()=="weekend")
+                if (dayOfWeek.ToLower() == "weekend")
                 {
                     flights = flights.Where(
-                        x => DateHelpers.GetDayOfWeekString(DateHelpers.GetDate(x.scheduled)).ToLower() =="friday" ||
+                        x => DateHelpers.GetDayOfWeekString(DateHelpers.GetDate(x.scheduled)).ToLower() == "friday" ||
                         DateHelpers.GetDayOfWeekString(DateHelpers.GetDate(x.scheduled)).ToLower() == "saturday").ToList();
 
+                }
+                else if (dayOfWeek.ToLower() == "today")
+                {
+                    var today = DateTime.Now.ToShortDateString();
+                    flights = flights.Where(
+                     x => DateHelpers.GetDate(x.scheduled).ToShortDateString() == today).ToList();
                 }
                 else
                 {
