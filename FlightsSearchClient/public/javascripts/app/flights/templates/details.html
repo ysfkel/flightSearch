@@ -1,12 +1,16 @@
 
 <div class="search-container" ng-class="{'search-bg':flights.length>0 && !searching}">
 
-    <input class="search-input" ng-model="formData.text" ng-keyup="controller.getFlights($event)" />
+   <div class="search-field-container">
+        <img class="svg-search-icon search-input-icon" ng-if="!searching" src="../../assets/icons/search.svg" onerror="this.src='your.png'">
+        <img class="search-input-icon" ng-if="searching" src="../../assets/icons/ajax-loader.gif" alt="">
+
+        <input class="search-input" ng-model="formData.text" ng-keyup="controller.getFlights($event)" />
+     
+   </div>
 
 
-    <img class="svg-search-icon search-input-icon" ng-if="!searching" src="../../assets/icons/search.svg" onerror="this.src='your.png'">
-    <img class="search-input-icon" ng-if="searching" src="../../assets/icons/ajax-loader.gif" alt="">
-
+   
     <div class="search-result">
         <table ng-if="flights.length>0">
             <tbody>
