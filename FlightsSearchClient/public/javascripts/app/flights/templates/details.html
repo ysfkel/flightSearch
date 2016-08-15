@@ -1,0 +1,28 @@
+
+<div class="search-container" ng-class="{'search-bg':flights.length>0 && !searching}">
+
+    <input class="search-input" ng-model="formData.text" ng-keyup="controller.getFlights($event)" />
+
+
+    <img class="svg-search-icon search-input-icon" ng-if="!searching" src="../../assets/icons/search.svg" onerror="this.src='your.png'">
+    <img class="search-input-icon" ng-if="searching" src="../../assets/icons/ajax-loader.gif" alt="">
+
+    <div class="search-result">
+        <table ng-if="flights.length>0">
+            <tbody>
+                <tr ng-repeat="flight in flights track by $index">
+                    <td class="icon"><img class="svg-flight-icon" src="../../assets/icons/plane.svg" onerror="this.src='your.png'"></td>
+                    <td class="city">{{flight.fullName}}</td>
+                    <td>{{flight.flightNumber}}</td>
+                    <td>{{flight.lang.en.destinationName}}</td>
+                    <td> at </td>
+                    <td>{{flight.scheduled | date:'h:mm a'}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <div ng-if="flights.length==0 && !searching" class="no-result">
+            no flights were found
+        </div>
+    </div>
+
+</div>

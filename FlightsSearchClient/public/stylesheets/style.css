@@ -1,0 +1,141 @@
+
+
+@font-face {
+    font-family: robotoLight;
+    src: url(../../assets/font/roboto/Roboto-Light.ttf);
+    font-weight:400;
+}
+
+@font-face {
+    font-family: robotoMedium;
+    src: url(../../assets/font/roboto/Roboto-Medium.ttf);
+    font-weight:400;
+}
+
+@font-face {
+    font-family: robotoRegular;
+    src: url(../../assets/font/roboto/Roboto-Regular.ttf) format('truetype');;
+    font-weight:700;
+    color:red;
+}
+.logo{
+     width: 28px;
+    transform: rotate(0deg);
+    border: 1px solid #F8F8F8;
+    border-radius: 360px;
+    padding: 3px;
+}
+
+body {
+  background: #f8f8f8;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+
+.profile-nav-ul{
+ padding: 10px 0 10px 5px;
+}
+
+.profile-nav-ul li{
+  list-style:none;
+  margin: 0 0 5px 0;
+}
+
+.panel-profile-form{
+   padding:20px 0px;
+}
+.navbar{
+  background: white; 
+      padding: 10px; 
+}
+
+* {
+  margin: 0;
+  padding:0 ;
+}
+
+.iconmebaby{
+  position:relative;
+  margin:5px;
+}
+
+.search-input-icon{
+    position: absolute;
+    display: inline-block;
+   
+        left: 878px;
+       top: 97px;
+}
+.svg-search-icon {
+   width: 16px;
+    height: 16px;
+}
+.svg-flight-icon{
+    width: 20px;
+    height: 20px;
+    left: 272px;
+    top: 10px;
+    transform: rotate(30deg);
+}
+.search-result{
+  padding:0 2px;
+}
+
+.search-result td{
+
+    padding: 0 5px;
+    width: 54px;
+}
+
+.search-result td.icon{
+    text-align: right;
+}
+
+.search-result td.ciy{
+    text-align: 120px;
+}
+
+.search-input{
+ padding: 17px;
+    border-radius: 25px !important;
+    outline: none;
+    width: 93%;
+    height: 15px;
+    border: none;
+    margin-bottom: 17px;
+  -moz-border-radius: 25px; 
+  -webkit-border-radius: 25px; 
+-webkit-box-shadow: 0px 11px 4px -1px rgba(235,238,240,1);
+-moz-box-shadow: 0px 11px 4px -1px rgba(235,238,240,1);
+box-shadow: 0px 11px 4px -1px rgba(235,238,240,1);
+  font-family:robotoRegular, sans-serif, Courier, monospace !important;
+
+}
+.search-container{
+        margin: 18px auto;
+    width: 466px;
+    height: auto;
+    padding: 0 0 10px 0;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+.search-summary{
+      display: block;
+    margin: 0 auto;
+    width: 262px;
+    margin-top: 10px;
+    padding:10px;
+}
+.search-bg{
+  background:white;
+}
+.no-result{
+      width: 202px;
+    margin: 0 auto;
+}
