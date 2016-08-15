@@ -104,6 +104,9 @@ a {
     text-align: left;
     width: 110px;
 }
+.search-result td.time{
+    color: #47C090;
+}
 
 .search-input{
  padding: 17px;
